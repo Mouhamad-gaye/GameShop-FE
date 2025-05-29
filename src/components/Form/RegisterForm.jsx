@@ -11,11 +11,11 @@ export default function RegisterForm({setNewUser}) {
     email: '',
     password: '',
     paswword2: '',
-  })
+  });
 
   function handleChange(e) {
     setFormData({...FormData, [e.target.name]: e.target.value})
-  }
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -39,12 +39,6 @@ export default function RegisterForm({setNewUser}) {
       return alert(msg)
     }
 
-    try {
-      
-    } catch (err) {
-      console.error(err);
-    }
-  }
 
     try{
       await signup(formData)
@@ -55,7 +49,7 @@ export default function RegisterForm({setNewUser}) {
       console.error(err)
     }
   }
-  
+
   return (
     <form onSubmit={handleSubmit} className={style.formContainer}>
       <input onChange={handleChange} type="text" name="username" placeholder='Username'  />
