@@ -1,5 +1,13 @@
+import LoginForm from "../components/Form/LoginForm";
+import RegisterForm from "../components/Form/RegisterForm";
+import { useState } from "react";
+
 export default function AuthPage() {
-    return (
-        <h1>Authentication</h1>
-    )
+  const [newUser, setNewUser] = useState(false);
+
+  return newUser ? (
+    <RegisterForm  setNewUser={setNewUser} />
+  ) : (
+    <LoginForm setNewUser={setNewUser} />
+  );
 }

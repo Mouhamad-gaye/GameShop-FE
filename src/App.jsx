@@ -1,33 +1,38 @@
-import './App.css'
-import { Routes, Route } from 'react-router-dom'
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
 
-//Pages
-import HomePage from './pages/HomePage'
-import AuthPage from './pages/AuthPage'
-import DashBoard from './pages/DashBoard'
-import CreateForm from './pages/CreateForm'
-import ShowOnePage from './pages/ShowOnePage'
-import NotFoundPage from './pages/NotFoundPage'
+// Pages
+import Homepage from "./pages/Homepage";
+import AuthPage from "./pages/AuthPage";
+import CreateForm from "./pages/CreateForm/CreateForm";
+import Dashboard from "./pages/Dashboard";
+import ShowOnePage from "./pages/ShowOnePage";
+import NotFound from "./pages/NotFoundPage";
 
-//Components
-import Nav from './components/Nav/Nav'
+// Components
+import Nav from "./components/Nav/Nav";
+import ProctectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
- 
-
   return (
     <>
       <Nav />
-      <Routes>
-        <Route path="/" element={<HomePage/>} />
-        <Route path="/auth"  element={<AuthPage />}/>
-        <Route path="/dashboard" element={<DashBoard />}/>
-        <Route path="/create" element={<CreateForm />}/>
-        <Route path="/product/:id" element={<ShowOnePage />}/>
-        <Route path="*" element={<NotFoundPage />}/>
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/auth" element={<AuthPage />} />
+
+          <Route element={<ProctectedRoutes />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/create" element={<CreateForm />} />
+          </Route>
+
+          <Route path="/product/:id" element={<ShowOnePage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
